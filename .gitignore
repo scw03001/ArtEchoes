@@ -4,3 +4,4 @@ dataset/images/
 .env
 GoogleImageSearch/crawled_images/
 GoogleImageSearch/BestArtists50/crawled_images/
+website/uploads
