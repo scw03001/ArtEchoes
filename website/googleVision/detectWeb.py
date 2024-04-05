@@ -26,7 +26,7 @@ def detect_web(path):
     if annotations.best_guess_labels:
         for label in annotations.best_guess_labels:
             best_guesses.add(label.label)
-            print(f"\nBest guess label: {label.label}")
+            # print(f"\nBest guess label: {label.label}")
 
     # if annotations.pages_with_matching_images:
     #     print(
@@ -63,8 +63,8 @@ def detect_web(path):
             if not any(filter_word in entity.description for filter_word in filter_words):
                 descrptions.add(entity.description)
 
-            print(f"\n\tScore      : {entity.score}")
-            print(f"\tDescription: {entity.description}")
+            # print(f"\n\tScore      : {entity.score}")
+            # print(f"\tDescription: {entity.description}")
 
     # if annotations.visually_similar_images:
     #     print(
@@ -81,8 +81,8 @@ def detect_web(path):
             "{}\nFor more info on error messages, check: "
             "https://cloud.google.com/apis/design/errors".format(response.error.message)
         )
-    print(best_guesses)    
-    print(descrptions)
+    # print(best_guesses)    
+    # print(descrptions)
 
     return best_guesses, descrptions
 

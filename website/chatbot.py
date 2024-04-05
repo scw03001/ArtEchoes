@@ -2,7 +2,7 @@
 Page for the chatbot
 '''
 from flask import Blueprint, render_template_string, request
-from googleVision import detect_web
+from googleVision.detectWeb import detect_web
 
 
 path = './uploads/'
