@@ -7,6 +7,7 @@ from make_animation import make_animation_bp
 
 # main app
 app = Flask(__name__)
+app.secret_key = 'example_secret_key' 
 # register blueprints
 app.register_blueprint(chatbot_bp)
 app.register_blueprint(find_artist_bp)
@@ -88,5 +89,5 @@ def choose_option(filename):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
-    # app.run(debug=True)
+    #app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True)
