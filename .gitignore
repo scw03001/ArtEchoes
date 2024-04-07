@@ -10,3 +10,4 @@ artechos-1200256b62a5.json
 __pycache__
 dataset/resized/
 dataset/resized_original (change the name to resized to run augmentData.py)/
+website/model/
