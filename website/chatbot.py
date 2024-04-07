@@ -23,7 +23,7 @@ def chatbot(filename=None):
             pass
     else:
         # extract the best_guesses
-        best_guesses, descriptions = detect_web(path + filename)
+        #best_guesses, descriptions = detect_web(path + filename)
 
         return render_template_string('''
         <!doctype html>
