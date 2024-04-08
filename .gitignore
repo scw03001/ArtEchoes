@@ -11,3 +11,4 @@ __pycache__
 dataset/resized/
 dataset/resized_original (change the name to resized to run augmentData.py)/
 website/model/
+generated_videos/
