@@ -18,7 +18,7 @@ artists = df['name'].values
 artists.sort()
 artists_dict = {i: artist for i, artist in enumerate(artists)}
 
-print(artists_dict)
+# print(artists_dict)
 
 find_artist_bp = Blueprint('find_artist', __name__)
 num_classes = len(artists)

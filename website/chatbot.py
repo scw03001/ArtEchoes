@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template_string, request, redirect, url_for, session, jsonify
 
 # Assuming detect_web is a function from googleVision.detectWeb that returns best_guesses and descriptions
-from googleVision.detectWeb import detect_web
+# from googleVision.detectWeb import detect_web
 
 
 path = './uploads/'
