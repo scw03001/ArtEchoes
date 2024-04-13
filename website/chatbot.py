@@ -1,8 +1,13 @@
 from flask import Blueprint, render_template_string, request, redirect, url_for, session, jsonify
+from dotenv import load_dotenv
+import os
 
 # Assuming detect_web is a function from googleVision.detectWeb that returns best_guesses and descriptions
 # from googleVision.detectWeb import detect_web
 
+
+load_dotenv()
+chatbot_api = os.getenv('chatbot_api')
 
 path = './uploads/'
 
@@ -61,7 +66,7 @@ from openai import OpenAI
 
 client = OpenAI(
     # This is the default and can be omitted
-    api_key='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',
+    api_key=chatbot_api,
 )
 
 # @chatbot_bp.route('/chat_feature', methods=['GET', 'POST'])
