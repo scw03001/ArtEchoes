@@ -39,6 +39,9 @@ def make_animation(filename=None):
     
     generation_id = response.json().get('id')
     print("Generation ID:", generation_id)
+    return {"generation_ID" : generation_id}
+    # Note: The generated video was never stored in the desried address, to the rest the request of the video
+    # was moved to the web app.
 
     # Wait for the video to be generated => needs to be changed 
     time.sleep(60)
