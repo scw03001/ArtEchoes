@@ -9,9 +9,17 @@ from torchvision import transforms
 from torch import nn, optim
 from PIL import Image
 import pandas as pd
+import numpy as np
 from torchvision import models
 from flask_cors import cross_origin
 from flask_cors import CORS
+
+from pytorch_grad_cam import GradCAM
+from pytorch_grad_cam.utils.image import show_cam_on_image
+from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
+import cv2
+import os
+
 
 # Arist dictionary
 df = pd.read_csv('./artists/artists.csv')
@@ -87,6 +95,9 @@ def find_artist(filename=None):
         # Load the image
         image = Image.open('./uploads/' + filename)
 
+        # Convert the image to a numpy array to run with GradCAM
+        rgb_img = np.array(image.convert('RGB'), dtype=np.float32) / 255.0
+
         # Apply the transformation
         image_tensor = transform(image).unsqueeze(0)
 
@@ -98,11 +109,25 @@ def find_artist(filename=None):
         # Get the artist name
         artist = artists_dict[predicted.item()]
 
+        # Based on the Grad-CAM, since we use ResNet18, we use the layer4 as the target layer
+        target_layers = [model.layer4[-1]]
+        cam = GradCAM(model=model, target_layers=target_layers)
+
+        targets = [ClassifierOutputTarget(predicted.item())]
+        
+        grayscale_cam = cam(input_tensor=image_tensor, targets=targets)[0, :]
+
+        grayscale_cam = cv2.resize(grayscale_cam, (rgb_img.shape[1], rgb_img.shape[0]))
+
+        visualisation = show_cam_on_image(rgb_img, grayscale_cam, use_rgb=True)
+
+        heatmap = Image.fromarray((visualisation * 255).astype(np.uint8))
+
         # Save prediction in session variables
         # session['best_guesses_artist'] = artist
 
         return {"artist": artist,
-                "images": []}
+                "images": [heatmap]}
     except FileNotFoundError:
         return {"error": "File not found"}, 404
     except Exception as e:
