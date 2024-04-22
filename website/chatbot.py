@@ -103,6 +103,34 @@ client = OpenAI(
 #         ''', artwork_info=artwork_info)
 
 
+# Endpoint for getting session artwork
+@chatbot_bp.route('/chat_artwork', methods=['GET'])
+def get_artwork():
+    print("Session keys:", session.keys())
+    artwork_info = session.get('best_guesses', 'Server: No artwork info available')
+
+    return {'artwork': artwork_info}
+
+
+# Endpoint for saving/updating the artwork piece in the session
+@chatbot_bp.route('/chatbot/<filename>', methods=['GET', 'POST'])
+def chatbot2(filename=None):
+    if request.method == 'POST':
+        if request.form.get('correct') == 'yes':
+            artwork_info = session.get('best_guesses', '')
+        elif request.form.get('correct') == 'no' and request.form.get('correct_title'):
+            # Process the correct title as needed
+            artwork_info = request.form.get('correct_title')
+        session['artwork_info'] = artwork_info
+        return redirect(url_for('chatbot.chat_feature'))
+    else:
+        # Use Google Vision API to get the best_guesses and descriptions
+        # best_guesses, descriptions = detect_web(path + filename)
+        best_guesses = "The Starry Night"  # Placeholder for demonstration
+        descriptions = "Example Descriptions"  # Placeholder for demonstration
+
+        session['best_guesses'] = best_guesses 
+
 
 @chatbot_bp.route('/chat_feature', methods=['GET', 'POST'])
 def chat_feature():
@@ -120,7 +148,7 @@ def chat_feature():
             ]
         )
         return jsonify({'response': response.choices[0].message.content})
-    
+        
     # For GET request, simply return the chat interface
     return render_template_string('''
     <!doctype html>

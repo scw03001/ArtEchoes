@@ -1,14 +1,17 @@
-from flask import Flask, render_template_string, request, redirect, url_for
+from flask import Flask, render_template_string, request, redirect, url_for, send_from_directory
 import os
-
+from flask_cors import CORS
 from chatbot import chatbot_bp
 from find_artist import find_artist_bp
 from make_animation import make_animation_bp
 
 # main app
 app = Flask(__name__)
-app.secret_key = 'example_secret_key' 
+CORS(app)
+app.secret_key = 'example_secret_key'
 # register blueprints
+CORS(find_artist_bp, supports_credentials=True)
+CORS(chatbot_bp, supports_credentials=True)
 app.register_blueprint(chatbot_bp)
 app.register_blueprint(find_artist_bp)
 app.register_blueprint(make_animation_bp)
@@ -49,6 +52,7 @@ def upload_form():
     </html>
     ''')
 
+# Endpoint to upload a picture
 @app.route('/', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
@@ -61,10 +65,27 @@ def upload_file():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
         print(f'{filename} uploaded successfully.')
-        return redirect(url_for('choose_option', filename=filename))
+        # return redirect(url_for('choose_option', filename=filename))
+        return {"status": "success"}, 200
     else:
         # This should be visualised in the website as well and make users to re-upload the file
         return 'Allowed file types are png, jpg, jpeg'
+    
+
+# return image from server
+@app.route('/images/<filename>')
+def get_image(filename):
+    try:
+        # Validate if the filename is secure and prevent path traversal attacks
+        if '..' in filename or filename.startswith('/'):
+            return {}
+        
+        return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+    except FileNotFoundError:
+        return {}
+
+if __name__ == '__main__':
+    app.run(debug=True)
     
 
 @app.route('/choose_option/<filename>')
@@ -85,9 +106,5 @@ def choose_option(filename):
     ''', filename=filename)
 
 
-
-
-
-if __name__ == '__main__':
-     #app.run(host='0.0.0.0', port=5000)
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(port=8000, debug=True)
