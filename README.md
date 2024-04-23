@@ -15,24 +15,24 @@ This feature identifies the artist whose style most closely matches a given imag
 
 ### 3. Make Animation
 
-Artworks are static, and sometimes we want to see them in motion. Inspired by the idea of imagining paintings as animated, this feature generates random animations about 4 seconds videos.
+Artworks are static, and sometimes we want to see them in motion. Inspired by the idea of imagining paintings as animated, this feature generates random animations about 4-second videos.
 
-## Technolgoies \& Codes
+## Technologies \& Codes
 
 ### Programming Languages
 
-- Model Training \& Implementaion: PyTorch
+- Model Training \& Implementation: PyTorch
 - Web Application: Flask
 
 ### Model
 
 #### ResNet18
 
-Due to the limited diversity of our training dataset, we implemented transfer leaerning for our model. We used a pretrained **ResNet 18** from PyTorch, modifyinh the final layer to accomodate the 50 artists in our dataset.
+Due to the limited diversity of our training dataset, we implemented transfer learning for our model. We used a pre-trained **ResNet 18** from PyTorch, modifying the final layer to accommodate the 50 artists in our dataset.
 
 #### GPT-3.5
 
-Our chatbout is based on GPT-3.5 to respond to the questions.
+Our chatbot is based on GPT-3.5 to respond to the questions.
 
 #### Stable Video Diffusion
 
@@ -64,7 +64,7 @@ We use OpenAI API to respond to the questions. The detail of the API is [here](h
 
 #### Stability AI
 
-Stability.AI provides video generation from given image. We planned to make animation with the input image and the user prompt. Unforutanetly, creating the model for this requires significant work and out of our ability. Additionally, we do not hav enough dataset to train the model. Therefore, we decided to use the API to provide videos from the given image. We use high value of motion_bucket_id to provide the motion. The detail of the API is [here: Image-to-Video](https://platform.stability.ai/docs/api-reference#tag/Edit/paths/~1v2beta~1stable-image~1edit~1remove-background/post).
+Stability.AI provides video generation from a given image. We planned to make an animation with the input image and the user prompt. Unfortunately, creating the model for this requires significant work and is out of our ability. Additionally, we do not have enough datasets to train the model. Therefore, we decided to use the API to provide videos from the given image. We use a high value of motion_bucket_id to provide the motion. The detail of the API is [here: Image-to-Video](https://platform.stability.ai/docs/api-reference#tag/Edit/paths/~1v2beta~1stable-image~1edit~1remove-background/post).
 
 ## Files
 
@@ -78,7 +78,7 @@ This directory contains the model generation and the dataset-related codes.
 
 
 dataset - dataset-related code.
-augmentData.py -> create augmented image to increase the data size
+augmentData.py -> Create an augmented image to increase the data size
 TrainReset18 -> Transfer Learning code for Resne 18
 
 ## Instructions
@@ -89,7 +89,7 @@ Install requirements.txt
 
 Create env file
 
-Create GCP server to run googleVision API + get .json file
+Create a GCP server to run googleVision API + get .json file
 
 export it to the server
 
