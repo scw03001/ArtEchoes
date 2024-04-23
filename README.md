@@ -95,14 +95,17 @@ export it to the server
 
 ## Sample Output
 
-### Chatbot
-
-TBC
-
 ### Find Artist
 
-TBC
+![ACV demo finartist10](https://github.com/scw03001/ArtEchoes/assets/20364366/0800fc4a-2d6a-4baf-a2ba-4ddf95f7dec9)
+
 
 ### Animation
 
-TBC
+![ACV demo animation10](https://github.com/scw03001/ArtEchoes/assets/20364366/6aee789d-6a6b-4948-a653-58dce6e7fd25)
+
+
+### Chatbot
+
+![ACV demo chat](https://github.com/scw03001/ArtEchoes/assets/20364366/b4b56938-b608-40d7-8842-941763d9f0dd)
+
