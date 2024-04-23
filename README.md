@@ -22,7 +22,7 @@ Artworks are static, and sometimes we want to see them in motion. Inspired by th
 ### Programming Languages
 
 - Model Training \& Implementation: PyTorch
-- Web Application: Flask
+- Web Application: NextJS, React, TypeScript, Flask & Python
 
 ### Model
 
@@ -92,6 +92,42 @@ Create env file
 Create a GCP server to run googleVision API + get .json file
 
 export it to the server
+
+# Instructions for Web Application
+To get our amazing application up and running, we need to set up and start 2 things:
+1. Our frontend application that will be the point of interaction for the user.
+2. Backend server that will respond to the HTTP requests sent by the web application.
+   
+### Quick Start (Frontend)
+Run in the terminal this command to install the dependencies:
+
+```bash
+npm install
+```
+
+Then run this command to start your local server
+
+```bash
+npm run dev
+```
+The local server will run in `localhost:3000`
+
+### Quick Start (Backend)
+Run in the terminal this command to install the dependencies:
+
+```bash
+pip3 install -r requirements.txt
+```
+
+Then run this command to start your backend server
+
+```bash
+python3 app.py
+```
+The backend server will run in `localhost:8000`
+
+
+#### After these two steps, our application will be ready to rock!
 
 ## Sample Output
 
