@@ -147,6 +147,39 @@ The backend server will run in `localhost:8000`
 
 #### After these two steps, our application will be ready to rock!
 
+
+## Results
+
+### Model Accuracy
+
+|  | Train | Test |
+|----------|----------|----------|
+| Accuracy | 0.989 | 0.611 |
+
+### Evaluation Metrics (Likerit-Scale Metrics)
+
+- Q1: The information provided by the chatbot was accurate.
+- Q2: It was easy to interact with the chatbot.
+- Q3: The conversation with the chatbot enhanced my understanding of the artworks. 
+- Q4: The chatbot effectively handles follow-up questions about artworks.
+- Q5: The chatbot was reliable upon asking complex art-related questions.
+- Q6: I was satisfied with the quality of the animations generated from the artworks.
+- Q7: It was easy to access and view the animations. 
+- Q8: The animations were relevant to the original style and theme of the artworks.
+- Q9: The animations captured my interest well.
+- Q10: The animation feature contributed to a deeper appreciation of the artworks.
+
+|          | Q1  | Q2  | Q3  | Q4  | Q5  | Q6  | Q7  | Q8  | Q9  | Q10 |
+|----------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| count    | 10  | 10  | 10  | 10  | 10  | 10  | 10  | 10  | 10  | 10  |
+| mean     | 4.60| 4.20| 3.70| 3.10| 4.60| 3.90| 4.10| 4.00| 3.70| 4.30|
+| std      | 0.52| 0.79| 0.95| 0.88| 0.52| 0.88| 0.74| 0.82| 0.67| 0.67|
+| min      | 4.00| 3.00| 3.00| 2.00| 4.00| 3.00| 3.00| 3.00| 3.00| 3.00|
+| 25%      | 4.00| 4.00| 3.00| 2.25| 4.00| 3.00| 4.00| 3.25| 3.00| 4.00|
+| 50%      | 5.00| 4.00| 3.00| 3.00| 5.00| 4.00| 4.00| 4.00| 4.00| 4.00|
+| 75%      | 5.00| 5.00| 4.75| 4.00| 5.00| 4.75| 4.75| 4.75| 4.00| 5.00|
+| max      | 5.00| 5.00| 5.00| 5.00| 5.00| 5.00| 5.00| 5.00| 5.00| 5.00|
+
 ## Sample Output
 
 ### Find Artist
