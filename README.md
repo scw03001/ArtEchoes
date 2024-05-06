@@ -38,7 +38,9 @@ Our chatbot is based on GPT-3.5 to respond to the questions.
 
 #### Stable Video Diffusion
 
-The video generation from the given image is based on **Stable Video Diffusion**. For more details, see the [Stable Video Diffusion paper](https://static1.squarespace.com/static/6213c340453c3f502425776e/t/655ce779b9d47d342a93c890/1700587395994/stable_video_diffusion.pdf).
+The video generation from the given image is based on **Stable Video Diffusion**. For more details, see the [Stable Video Diffusion paper](https://static1.squarespace.com/static/6213c340453c3f502425776e/t/655ce779b9d47d342a93c890/1700587395994/stable_video_diffusion.pdf). 
+
+***Note***: We use API request and response base code on the [Stability.AI documentation](https://platform.stability.ai/docs/api-reference). We modify the variables on the request.
 
 #### Grad-CAM
 
@@ -59,6 +61,8 @@ We collected our test dataset using [Google Custom Search](./GoogleImageSearch/i
 #### GoogleVision AI
 
 We use GoogleVision AI API to find the label of the artworks by using [**Detect Web entities and pages**](https://cloud.google.com/vision/docs/detecting-web). We extract the `best_guess_labels` and return the one with the highest score. We then ask users to verify if this label is correct. If not, users can manually enter the artwork name before starting the chatbot.
+
+***Note***: We use the code in Web detection request [Detect Web entities and pages**](https://cloud.google.com/vision/docs/detecting-web). Here, we modify the code by deleting unnecessary returns, and also add filters to remove the outputs such as museum.
 
 #### OpenAI
 
