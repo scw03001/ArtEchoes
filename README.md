@@ -1,6 +1,8 @@
 <!-- 디렉토리 정리 한번 싹 하고 Path 다시 수정할 것 -->
 # ArtEchoes
 
+To professor: Since we met every Thursday to conduct progress reports and pair programming, there are not many code reviews in the GitHub repository.
+
 ## Project Overview
 
 This project aims to create a web application to enhance users' understanding of the artworks while also providing entertainment. This application includes three major functionalities:
@@ -40,7 +42,7 @@ The video generation from the given image is based on **Stable Video Diffusion**
 
 #### Grad-CAM
 
-TBC
+We use Grad-CAM to visualise the reasoning of the classificaiton. Since our base model is ResNet18, our target layer for Grad-CAM is fourth-to-last layer. If you want to see how this works, see the [pytorch-grad-cam](https://github.com/jacobgil/pytorch-grad-cam). 
 
 ### Datasets
 
@@ -68,37 +70,49 @@ Stability.AI provides video generation from a given image. We planned to make an
 
 ## Files
 
-#### dataset
+The folders below contain files organized according to their respective roles:
 
-This directory contains the model generation and the dataset-related codes.
-
-- [augmentData.py](./dataset/augmentData.py): Augument images.
-- [TrainRes18.py](./dataset/TrainRes18.py): Train the model.
-
-
-
-dataset - dataset-related code.
-augmentData.py -> Create an augmented image to increase the data size
-TrainReset18 -> Transfer Learning code for Resne 18
+- [GoogleImageSearch](./GoogleImageSearch): Contains our dataset information, and the image crawler.
+- [Wikipedia](./Wikipedia/): Contains the Wikipedia PDF files and script for 50 artists.
+- [dataset](./dataset/): Contains our model trining code and saved models.
+- [frontend](./frontend/): Contains frontend code.
+- [website](./website/): Contains backend code.
 
 ## Instructions
 
 Create virtual env
 
+```bash
+conda create -n env
+conda activate env
+```
+
 Install requirements.txt
 
-Create env file
+```bash
+pip install -r requirements.txt
+```
 
-Create a GCP server to run googleVision API + get .json file
+Create a GCP account (googleVision API), OpenAI account, Stability.AI account
 
-export it to the server
+Create .env file, and add API keys on it
 
-# Instructions for Web Application
+```bash
+google_search_api_key = "key"
+google_custom_search_api = "key"
+stability_api = "key"
+chatbot_api= "key"
+```
+
+### Instructions for Web Application
+
 To get our amazing application up and running, we need to set up and start 2 things:
+
 1. Our frontend application that will be the point of interaction for the user.
 2. Backend server that will respond to the HTTP requests sent by the web application.
-   
-### Quick Start (Frontend)
+
+#### Quick Start (Frontend)
+
 Run in the terminal this command to install the dependencies:
 
 ```bash
@@ -112,7 +126,7 @@ npm run dev
 ```
 The local server will run in `localhost:3000`
 
-### Quick Start (Backend)
+#### Quick Start (Backend)
 Run in the terminal this command to install the dependencies:
 
 ```bash

@@ -123,6 +123,13 @@ def find_artist(filename=None):
 
         heatmap = Image.fromarray((visualisation * 255).astype(np.uint8))
 
+        # Check if the directory exists and create it if necessary
+        if not os.path.exists('./static/'):
+            os.makedirs('./static/')
+
+        # Save the heatmap
+        heatmap.save(f'./static/{filename}_heatmap.jpg')
+
         # Save prediction in session variables
         # session['best_guesses_artist'] = artist
 
