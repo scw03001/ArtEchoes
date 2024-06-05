@@ -1,7 +1,5 @@
-<!-- 디렉토리 정리 한번 싹 하고 Path 다시 수정할 것 -->
-# ArtEchoes
 
-To professor: Since we met every Thursday to conduct progress reports and pair programming, there are not many code reviews in the GitHub repository.
+# ArtEchoes
 
 ## Project Overview
 
